@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verify Email - SafetyGrid</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="verify-body">
+
+    <div class="verify-container">
+        <h1>🔑 Email Verification</h1>
+        <p>Enter the 6-digit OTP sent to your email.</p>
+
+        <form id="verifyForm">
+            <input type="text" id="otpInput" placeholder="Enter OTP" required>
+            <button type="submit" class="btn-verify">Verify</button>
+        </form>
+
+        <p>Didn't receive the OTP? <a href="#" onclick="resendOTP()">Resend OTP</a></p>
+    </div>
+
+    <script>
+        document.getElementById("verifyForm").addEventListener("submit", function (event) {
+            event.preventDefault();
+            let enteredOTP = document.getElementById("otpInput").value;
+            let storedOTP = localStorage.getItem("userOTP");
+
+            if (enteredOTP === storedOTP) {
+                localStorage.setItem("isVerified", "true");
+                alert("Verification successful! You can now log in.");
+                window.location.href = "login.html";
+            } else {
+                alert("Invalid OTP! Please try again.");
+            }
+        });
+
+        function resendOTP() {
+            let newOTP = Math.floor(100000 + Math.random() * 900000);
+            localStorage.setItem("userOTP", newOTP);
+            alert("New OTP: " + newOTP);
+        }
+    </script>
+
+</body>
+</html>

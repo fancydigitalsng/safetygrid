@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SafetyGrid - Emergency Alerts</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="scripts.js"></script>   
+</head>
+<body>
+
+    <header>
+        <h1>🚨 SafetyGrid</h1>
+        <p>Stay alert. Stay safe.</p>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="register.html" class="btn-register">Sign up/ Sign In</a>
+        </nav>
+    </header>
+    
+     <section class="report-section">
+        <h2>📢 Report an Emergency</h2>
+        <form id="alertForm">
+            <div class="input-group">
+                <label>Alert Type:</label>
+                <select id="alertType">
+                    <option value="crime">🚔 Crime</option>
+                    <option value="accident">🚑 Accident</option>
+                    <option value="fire">🔥 Fire</option>
+                    <option value="roadblock">🚧 Roadblock</option>
+                </select>
+            </div>
+
+            <div class="input-group">
+                <label>Description:</label>
+                <textarea id="alertMessage" placeholder="Describe the emergency..." required></textarea>
+                <label for="media">Upload Image/Video:</label>
+            <input type="file" id="media" accept="image/*,video/*" optional>
+        </form>
+        <p id="statusMessage"></p>
+    </div>
+            </div>
+
+            <button type="submit" class="btn">Submit Alert</button>
+        </form>
+    </section>
+
+    <section class="alerts-section">
+        <h2>📡 Live Alerts Near You</h2>
+        <div id="alertsFeed"></div>
+    </section>
+<script src="scripts.js"></script>
+<script src="report.js"></script>
+</body>
+</html>

@@ -1,0 +1,595 @@
+/* GENERAL STYLING */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #f8f9fa;
+    color: #222;
+    text-align: center;
+    padding: 20px;
+}
+
+/* HEADER */
+header {
+    background: linear-gradient(135deg, #ff0000, #b30000);
+    color: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* SECTIONS */
+.report-section, .alerts-section {
+    background: white;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+}
+
+/* INPUT GROUP */
+.input-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.input-group label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+}
+
+textarea, select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+/* BUTTON */
+.btn {
+    background: red;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: darkred;
+}
+
+/* ALERTS */
+#alertsFeed {
+    text-align: left;
+    padding: 10px;
+}
+
+.alert {
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+.high { background: #ff4d4d; color: white; }
+.medium { background: #ffcc00; color: black; }
+.low { background: #4caf50; color: white; }
+
+/* Register Page */
+/* REGISTER PAGE STYLING */
+.register-body {
+    background: linear-gradient(135deg, #ff0000, #990000);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Centered Register Box */
+.register-container {
+    background: #121212;
+    padding: 40px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px rgba(255, 0, 0, 0.5);
+    color: white;
+    width: 90%;
+    max-width: 400px;
+    margin: auto;
+}
+
+/* Title */
+.register-container h1 {
+    margin-bottom: 10px;
+    color: red;
+}
+
+/* Inputs */
+.register-container input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 5px;
+    background: #1c1c1c;
+    color: white;
+}
+
+/* Register Button */
+.btn-register {
+    width: 100%;
+    padding: 20px;
+    background: red;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    color: white;
+    cursor: pointer;
+    padding: 20px;
+}
+
+.btn-register:hover {
+    background: darkred;
+}
+
+/* Links */
+.register-container a {
+    color: red;
+    text-decoration: none;
+}
+
+.register-container a:hover {
+    text-decoration: underline;
+}
+
+/* MOBILE RESPONSIVENESS */
+@media screen and (max-width: 480px) {
+    .register-container {
+        width: 95%;
+        padding: 30px;
+    }
+
+    .register-container h1 {
+        font-size: 22px;
+    }
+}
+
+
+/* Login Page */
+/* LOGIN PAGE STYLING - MOBILE FRIENDLY */
+.login-body {
+    background: linear-gradient(135deg, #ff0000, #990000);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Centered Login Box */
+.login-container {
+    background: #121212;
+    padding: 40px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px rgba(255, 0, 0, 0.5);
+    color: white;
+    width: 90%; /* Mobile-Friendly Width */
+    max-width: 400px; /* Limits width on larger screens */
+    margin: auto; /* Centering */
+}
+
+/* Title Styling */
+.login-container h1 {
+    margin-bottom: 10px;
+    color: red;
+}
+
+/* Input Fields */
+.login-container input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 5px;
+    background: #1c1c1c;
+    color: white;
+}
+
+/* Login Button */
+.btn-login {
+    width: 100%;
+    padding: 12px;
+    background: red;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    color: white;
+    cursor: pointer;
+}
+
+.btn-login:hover {
+    background: darkred;
+}
+
+/* Link Styling */
+.login-container a {
+    color: red;
+    text-decoration: none;
+}
+
+.login-container a:hover {
+    text-decoration: underline;
+}
+
+/* FULLY RESPONSIVE DESIGN */
+@media screen and (max-width: 480px) {
+    .login-container {
+        width: 95%;
+        padding: 30px;
+    }
+
+    .login-container h1 {
+        font-size: 22px;
+    }
+}
+
+/* Dashboard Styling */
+/* DASHBOARD STYLING - FULLY RESPONSIVE */
+.dashboard-container {
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+}
+
+/* Sidebar (Filters) */
+.sidebar {
+    background: white;
+    padding: 15px;
+    width: 250px;
+    border-radius: 10px;
+}
+
+/* Alerts Section */
+.alerts-container {
+    flex: 2;
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+/* Map Section */
+.map-container {
+    flex: 1;
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+}
+#map {
+    height: 300px;
+    border-radius: 10px;
+    width: 100%;
+}
+
+@media screen and (max-width: 768px) {
+    #map {
+        height: 250px;
+    }
+}
+
+/* Alert Card */
+.alert-card {
+    background: #ffffff;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 8px;
+    color: white;
+}
+
+@media screen and (max-width: 600px) {
+    .alert-card {
+        font-size: 14px;
+        padding: 12px;
+    }
+}
+
+/* 📌 MAKE IT RESPONSIVE */
+@media screen and (max-width: 768px) {
+    .dashboard-container {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .sidebar {
+        width: 100%;
+        text-align: center;
+    }
+
+    .alerts-container,
+    .map-container {
+        width: 100%;
+    }
+}
+
+/* Otp page */
+/* OTP VERIFICATION PAGE */
+.verify-body {
+    background: linear-gradient(135deg, #ff0000, #990000);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+}
+
+/* OTP Box */
+.verify-container {
+    background: #121212;
+    padding: 40px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px rgba(255, 0, 0, 0.5);
+    color: white;
+    width: 90%;
+    max-width: 400px;
+    margin: auto;
+}
+
+/* OTP Input */
+.verify-container input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 5px;
+    background: #1c1c1c;
+    color: white;
+}
+
+/* Verify Button */
+.btn-verify {
+    width: 100%;
+    padding: 12px;
+    background: red;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    color: white;
+    cursor: pointer;
+}
+
+.btn-verify:hover {
+    background: darkred;
+}
+
+/* Report Page Styling */
+.body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f8f8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    background: white;
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.h1 {
+    color: #d32f2f;
+}
+
+.h2 {
+    color: black;
+
+}
+
+.textarea, input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.button {
+    background-color: #d32f2f;
+    color: white;
+    border: none;
+    padding: 10px;
+    width: 100%;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: #b71c1c;
+}
+
+/* Homepage Styling */
+/* Reset Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* General Styles */
+body {
+    background: #0d0d0d;
+    color: #000000;
+    text-align: center;
+}
+
+/* Header */
+header {
+    background: linear-gradient(135deg, #d32f2f, #ff6b6b);
+    color: white;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0px 4px 10px rgba(255, 0, 0, 0.3);
+}
+
+nav {
+    margin-top: 10px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    color: #ffcccb;
+}
+
+/* Hero Section */
+.hero {
+    background: url('https://source.unsplash.com/1600x900/?emergency,alert') no-repeat center center/cover;
+    padding: 80px 20px;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+}
+
+.hero h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-top: 10px;
+}
+
+.cta {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 25px;
+    background: #ff4c4c;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 50px;
+    transition: 0.3s;
+}
+
+.cta:hover {
+    background: #ff1c1c;
+    box-shadow: 0px 0px 15px rgba(255, 0, 0, 0.6);
+}
+
+/* Alerts Section */
+.alerts, .features {
+    max-width: 90%;
+    margin: 40px auto;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    box-shadow: 0px 4px 10px rgba(255, 0, 0, 0.2);
+}
+
+.alert {
+    background: rgba(255, 255, 255, 0.1);
+    margin: 10px 0;
+    padding: 15px;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+.alert:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.02);
+}
+
+.alert img {
+    width: 100%;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+/* Features Section */
+.features ul {
+    list-style: none;
+    padding: 0;
+}
+
+.features li {
+    font-size: 1.1rem;
+    padding: 8px 0;
+    transition: 0.3s;
+}
+
+.features li:hover {
+    color: #ffcccb;
+}
+
+/* Footer */
+footer {
+    margin-top: 40px;
+    padding: 15px;
+    background: linear-gradient(135deg, #d32f2f, #ff6b6b);
+    color: white;
+    font-size: 0.9rem;
+    box-shadow: 0px -4px 10px rgba(255, 0, 0, 0.3);
+}
+
+/* Mobile Friendly */
+@media (max-width: 768px) {
+    .hero {
+        padding: 60px 15px;
+    }
+
+    .hero h2 {
+        font-size: 2rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+
+    .cta {
+        font-size: 1rem;
+        padding: 10px 20px;
+    }
+
+    .alerts, .features {
+        padding: 15px;
+    }
+}
+
+/* Homepage Background */
+/* Motion Gradient Background */
+body {
+    background: linear-gradient(45deg, #0d0d0d, #1a1a1a, #ff3333, #1a1a1a);
+    background-size: 400% 400%;
+    animation: gradientMove 10s ease infinite;
+}
+
+/* Keyframes for Moving Background */
+@keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Map Styling */

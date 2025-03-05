@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - SafetyGrid</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="register-body">
+
+    <div class="register-container">
+        <h1>🚨 Join SafetyGrid</h1>
+        <p>Be the first to get real-time emergency alerts.</p> 
+            <form id="registerForm">
+                <input type="text" id="fullname" placeholder="Full Name" required>
+                <input type="email" id="email" placeholder="Email Address" required>
+                <input type="password" id="password" placeholder="Create Password" required>
+                <input type="password" id="confirmPassword" placeholder="Confirm Password" required>
+            
+                <!-- Automatic Location Fields -->
+                <input type="text" id="city" placeholder="Detecting City..." readonly>
+                <input type="text" id="state" placeholder="Detecting State..." readonly>
+            
+                <button type="button" onclick="getLocation()" class="btn-location">📍 Detect Location</button>
+                <button type="submit" class="btn-register">Register</button>
+            </form>
+
+        <p>Already have an account? <a href="login.html">Login here</a></p>
+    </div>
+
+    <script>
+    document.getElementById("registerForm").addEventListener("submit", function (event) {
+        event.preventDefault();
+        
+        let fullname = document.getElementById("fullname").value;
+        let email = document.getElementById("email").value;
+        let password = document.getElementById("password").value;
+        let confirmPassword = document.getElementById("confirmPassword").value;
+        let city = document.getElementById("city").value;
+        let state = document.getElementById("state").value;
+
+        if (password !== confirmPassword) {
+            alert("Passwords do not match!");
+            return;
+        }
+
+        // Generate OTP
+        let otp = Math.floor(100000 + Math.random() * 900000);
+        localStorage.setItem("userOTP", otp);
+        localStorage.setItem("userEmail", email);
+        localStorage.setItem("userName", fullname);
+        localStorage.setItem("userCity", city);
+        localStorage.setItem("userState", state);
+        localStorage.setItem("isVerified", "false");
+
+        // Simulate OTP via alert (Replace with real email OTP later)
+        alert("Your OTP is: " + otp);
+
+        // Redirect to OTP verification page
+        window.location.href = "verify.html";
+    });
+    // Detect Location 
+    function getLocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(success, error);
+        } else {
+            alert("Geolocation is not supported by your browser.");
+        }
+    }
+
+    function success(position) {
+        let latitude = position.coords.latitude;
+        let longitude = position.coords.longitude;
+
+        // OpenCage API for Reverse Geocoding
+        let geocodeURL = `https://api.opencagedata.com/geocode/v1/json?q=${latitude}+${longitude}&key=151db7609c5a4db192dbc091cc1722ab`;
+
+        fetch(geocodeURL)
+            .then(response => response.json())
+            .then(data => {
+                if (data.results.length > 0) {
+                    let components = data.results[0].components;
+                    let city = components.city || components.town || components.village || "Unknown City";
+                    let state = components.state || "Unknown State";
+
+                    document.getElementById("city").value = city;
+                    document.getElementById("state").value = state;
+
+                    alert("Location detected: " + city + ", " + state);
+                } else {
+                    alert("Could not retrieve location details.");
+                }
+            })
+            .catch(error => console.error("Error fetching location:", error));
+    }
+
+    function error() {
+        alert("Unable to retrieve your location. Please allow location access.");
+    }
+
+    </script>        
+
+</body>
+</html>

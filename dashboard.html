@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SafetyGrid - Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Leaflet.js (Free Map Library) -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<style>
+    #map {
+        height: 400px;
+        width: 100%;
+        border-radius: 10px;
+        margin-top: 20px;
+    }
+</style>
+    <script defer src="dashboard.js"></script>
+</head>
+<body>
+
+    <!-- Redirect to login if not authenticated -->
+    <script>
+        if (!localStorage.getItem("userEmail")) {
+            window.location.href = "login.html";
+        }
+    </script>
+
+    <header class="dashboard-header">
+        <h1>🚨 SafetyGrid Dashboard</h1>
+        <nav>
+            <h1>Welcome, <span id="username"></span> 👋</h1>
+            <p>You're viewing alerts for: <strong><span id="userLocation"></span></strong></p>            
+            <a href="login.html" id="logoutBtn" class="btn-logout">Logout</a>
+            <a href="report.html" id="reportBtn" class="btn-report">Report an emergency</a>
+        </nav>
+    </header>
+
+    <section class="dashboard-container">
+        <!-- Sidebar for Filters -->
+        <aside class="sidebar">
+            <h3>Filter Alerts</h3>
+            <div>
+                <input type="checkbox" id="filter-crime" checked> 🚔 Crime  
+                <input type="checkbox" id="filter-accident" checked> 🚑 Accidents  
+                <input type="checkbox" id="filter-fire" checked> 🔥 Fires  
+                <input type="checkbox" id="filter-roadblock" checked> 🚧 Roadblocks  
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="alerts-container">
+            <h2>📍 Live Alerts in Your Area</h2>
+            <div id="alertsList">
+                <p>Loading alerts...</p>
+            </div>
+        </main>
+
+        <!-- Map Section -->
+        <section class="map-container">
+            <h2>🗺️ Incident Map</h2>
+            <div id="map"></div>
+        </section>
+    </section>
+    <section>
+    <h2>Emergency Alerts Near You</h2>
+    <div id="map"></div>
+    </section>
+    <script>
+        var map = L.map('map').setView([0, 0], 2); // Default View
+
+// Add OpenStreetMap Layer
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; OpenStreetMap contributors'
+}).addTo(map);
+
+function getLiveLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition, error);
+    } else {
+        alert("Geolocation is not supported by this browser.");
+    }
+}
+
+function showPosition(position) {
+    let latitude = position.coords.latitude;
+    let longitude = position.coords.longitude;
+
+    map.setView([latitude, longitude], 12); // Zoom into user's location
+
+    // User's Location Marker
+    L.marker([latitude, longitude]).addTo(map)
+        .bindPopup("<b>You are here</b>").openPopup();
+
+    // Fetch and Display Alerts on Map
+    fetchAlerts(latitude, longitude);
+}
+
+function fetchAlerts(lat, lon) {
+    fetch("https://api.safetygrid.com/alerts")
+        .then(response => response.json())
+        .then(data => {
+            data.forEach(alert => {
+                L.marker([alert.latitude, alert.longitude]).addTo(map)
+                    .bindPopup(`<b>${alert.title}</b><br>${alert.description}`);
+
+                // Show Web Notification
+                if (Notification.permission === "granted") {
+                    new Notification("🚨 Emergency Alert!", {
+                        body: `${alert.title} - ${alert.description}`,
+                        icon: "alert-icon.png"
+                    });
+                }
+            });
+        })
+        .catch(error => console.error("Error fetching alerts:", error));
+}
+
+function error() {
+    alert("Unable to retrieve your location.");
+}
+
+document.addEventListener("DOMContentLoaded", getLiveLocation);
+
+/* Browser Popup Notification */
+function requestNotificationPermission() {
+        if ("Notification" in window) {
+            Notification.requestPermission().then(permission => {
+                if (permission === "granted") {
+                    console.log("User allowed notifications.");
+                } else {
+                    console.log("User denied notifications.");
+                }
+            });
+        } else {
+            console.log("This browser does not support notifications.");
+        }
+    }
+
+    document.addEventListener("DOMContentLoaded", requestNotificationPermission);
+    </script>
+</body>
+</html>

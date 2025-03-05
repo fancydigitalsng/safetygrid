@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SafetyGrid - Real-Time Emergency Alerts</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore.js"></script>
+    <script defer src="home.js"></script>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <header>
+        <h1>SafetyGrid</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="report-emergency.html">Report an Emergency</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="login.html">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h2>Stay Alert, Stay Safe</h2>
+        <p>Real-time emergency alerts in your city. Get notified instantly.</p>
+    </section>
+
+    <!-- Live Alerts Section -->
+    <section class="alerts-section">
+        <h2>Live Emergency Alerts</h2>
+        <div id="alertFeed">Loading alerts...</div>
+    </section>
+
+    <!-- Real-Time Alert Map -->
+    <section class="map-section">
+        <h2>Emergency Alerts Near You</h2>
+        <div id="alertMap"></div>
+    </section>
+
+    <!-- Upcoming Features -->
+    <section class="features-section">
+        <h2>Upcoming Features</h2>
+        <ul>
+            <li>🚀 AI-Based Alert Detection</li>
+            <li>📢 Community-Driven Alerts</li>
+            <li>🛑 Live Traffic Hazard Warnings</li>
+        </ul>
+    </section>
+    <footer>
+        <p>&copy; 2025 SafetyGrid - Protecting Lives with Technology</p>
+    </footer>
+
+    <script src="firebase-config.js"></script>
+    <script src="scripts.js"></script>
+    <script src="home.js"></script>
+</body>
+</html>

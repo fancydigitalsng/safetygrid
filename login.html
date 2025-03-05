@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SafetyGrid - Login</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="login-body">
+
+    <div class="login-container">
+        <h1>🚨 SafetyGrid Login</h1>
+        <p>Stay connected & receive real-time emergency alerts.</p>
+        
+        <form id="loginForm">
+            <input type="email" id="email" placeholder="Enter your email" required>
+            <input type="password" id="password" placeholder="Enter your password" required>
+            <button type="submit" class="btn-login">Login</button>
+        </form>
+
+        <p>New user? <a href="register.html">Register here</a></p>
+    </div>
+
+    <script>
+        document.getElementById("loginForm").addEventListener("submit", function (event) {
+            event.preventDefault();
+            
+            let email = document.getElementById("email").value;
+            let password = document.getElementById("password").value;
+            let storedEmail = localStorage.getItem("userEmail");
+            let isVerified = localStorage.getItem("isVerified");
+    
+            if (email === storedEmail && isVerified === "true") {
+                alert("Login successful!");
+                window.location.href = "dashboard.html";
+            } else if (isVerified !== "true") {
+                alert("Please verify your email before logging in.");
+                window.location.href = "verify.html";
+            } else {
+                alert("Invalid email or password.");
+            }
+        });
+    </script>    
+</body>
+</html>
